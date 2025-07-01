@@ -3,6 +3,19 @@ import matplotlib.pyplot as plt
 
 
 class Signal:
+    """
+        Класс для создания и хранения сигнала.
+
+        Атрибуты:
+            duration (float): Длительность сигнала в секундах.
+            sampling_rate (int): Частота дискретизации в Гц.
+            t (np.ndarray): Массив точек времени.
+            data (np.ndarray): Массив значений сигнала.
+
+        Методы:
+            add_harmonic(amplitude, frequency): Добавляет гармоническую составляющую к сигналу.
+            add_aperiodic(noise_amplitude): Добавляет апериодический шум к сигналу.
+        """
     def __init__(self, duration: float, sampling_rate: int):
         self.duration = duration
         self.sampling_rate = sampling_rate
@@ -18,6 +31,18 @@ class Signal:
 
 
 class FourierTransform:
+    """
+        Класс для выполнения преобразования Фурье сигнала.
+
+        Атрибуты:
+            signal (Signal): Объект сигнала для анализа.
+            fft_result (np.ndarray): Результат преобразования Фурье.
+
+        Методы:
+            compute_fft(): Выполняет вычисление FFT.
+            get_magnitude(): Возвращает амплитудный спектр.
+            get_frequency_spectrum(): Возвращает массив частот.
+        """
     def __init__(self, signal: Signal):
         self.signal = signal
         self.fft_result = None
@@ -39,6 +64,18 @@ class FourierTransform:
 
 
 class SignalVisualizer:
+    """
+        Класс для визуализации сигнала и его спектра.
+
+        Атрибуты:
+            signal (Signal): Объект сигнала для визуализации.
+            fourier_transform (FourierTransform): Объект преобразования Фурье.
+
+        Методы:
+            plot_time_domain(): Строит график сигнала во временной области.
+            plot_frequency_domain(): Строит график амплитудного спектра.
+            save_plots(output_path): Сохраняет оба графика (временной и частотный) в один файл.
+        """
     def __init__(self, signal: Signal, fourier_transform: FourierTransform):
         self.signal = signal
         self.fourier_transform = fourier_transform
