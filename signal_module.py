@@ -109,7 +109,6 @@ class SignalVisualizer:
         Args:
             output_path (str): Путь для сохранения файла с графиками.
         """
-        import matplotlib.pyplot as plt
 
         fig, axs = plt.subplots(2, 1, figsize=(10, 8))
 
